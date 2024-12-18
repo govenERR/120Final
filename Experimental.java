@@ -10,7 +10,9 @@ public class Experimental extends CSVData{
     private ArrayList<Double> x = new ArrayList<Double>();
     private ArrayList<Double> y = new ArrayList<Double>();
 
-
+/*
+ * Converts the file data from absorbance vs time data into concentration vs. time data using the standard curve class calculations
+ */
     public void concentrationCalc(double absorbanceConversion) {
         try {
         Scanner justInts = new Scanner(this.file);
@@ -31,26 +33,26 @@ public class Experimental extends CSVData{
             this.concentration.add(y/absorbanceConversion);
         }
     }
-
+    /*
+     * Reads file, converts it into doubles and adds it to an array, and reads the first and last data points to create a line between them, which is set as the absorbance conversion
+     */
     public static double[] convertStringsToDoubles(String[] stringArray) {
-        // Create a float array to store the results
         double[] doubleArray = new double[stringArray.length];
         
-        // Loop through the string array and convert each element to float
         for (int i = 0; i < stringArray.length; i++) {
             try {
-                // Parse each string as a float
                 doubleArray[i] = Double.parseDouble(stringArray[i]);
             } catch (NumberFormatException e) {
-                // Handle invalid input (e.g., if the string cannot be parsed as a float)
                 System.err.println("Invalid number format: " + stringArray[i]);
-                doubleArray[i] = 0.0f;  // Default to 0.0f in case of error
+                doubleArray[i] = 0.0f;
             }
         }
         
         return doubleArray;
     }
-
+    /*
+     * Creates a CSV file for the data to be stored in, and writes the updated concentration data to the new file
+     */
     public void writeCSV() {
         try{
             File updatedCSV = new File("ExperimentalTvC.csv");
@@ -70,7 +72,9 @@ public class Experimental extends CSVData{
             e.printStackTrace();
         }
     }
-
+    /*
+     * Getter for this.concentration, returns the concentration data
+     */
     public ArrayList<Double> getConcentration() {
         return this.concentration;
     }
