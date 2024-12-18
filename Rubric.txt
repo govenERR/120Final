@@ -1,0 +1,35 @@
+Rubric
+
+## Level 1:
+yes (2pts): User can upload files, files are successfully read
+
+__ (1 pt): Calculations are performed accurately
+
+__ (1pt): Returns .csv file with calculated data
+
+## Level 2:
+__ (3pts): Creates graphs using calculated data
+
+__ (1pt): Graphs have labels giving the equations of lines of best fit
+
+__ (1 pt): Polished interface, aesthetically appealing
+
+## General Items:
+
+_____ 4 pts: Programs compile without errors or warnings
+
+_____ 2 pts: Executes fully & consistently without crashing (exception/freeze)
+
+_____ 2 pt: Complies with style guidelines (missing items 1 pt each):
+
+      _____ Classes & class members all have Javadoc header comments
+
+      _____ Clear and consistent indentation of bracketed sections
+
+      _____ Adheres to Java conventions on naming & capitalization
+
+      _____ Methods & variables all have clear and accurate names
+
+      _____ Methods avoid confusing side effects
+
+_____ 1 pt: All required files included with submission (including completed `rubric.md` file)
