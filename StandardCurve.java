@@ -4,12 +4,17 @@ import java.util.Hashtable;
 import java.util.Scanner;
 
 
-
+/*
+ * Child of CSVData, creates a conversion that is used to convert experimental data to concentration vs. time
+ */
 public class StandardCurve extends CSVData {
     private Double absorbanceConversion;
     private ArrayList<Double> x = new ArrayList<Double>();
     private ArrayList<Double> y = new ArrayList<Double>();
 
+    /*
+     * Reads file, converts it into doubles and adds it to an array, and reads the first and last data points to create a line between them, which is set as the absorbance conversion
+     */
     public void calculateSC() {
         
         try {
@@ -29,30 +34,27 @@ public class StandardCurve extends CSVData {
         Double deltaY = y.getLast() - y.getFirst();
         this.absorbanceConversion = deltaY/deltaX;
 
-
-
     }
-            
-
+/*
+Used in the file reading methods, converts the strings in the files into doubles, and adds them to an array. Returns the array of doubles
+ */     
         public static double[] convertStringsToDoubles(String[] stringArray) {
-            // Create a float array to store the results
             double[] doubleArray = new double[stringArray.length];
-            
-            // Loop through the string array and convert each element to float
             for (int i = 0; i < stringArray.length; i++) {
                 try {
-                    // Parse each string as a float
                     doubleArray[i] = Double.parseDouble(stringArray[i]);
                 } catch (NumberFormatException e) {
-                    // Handle invalid input (e.g., if the string cannot be parsed as a float)
                     System.err.println("Invalid number format: " + stringArray[i]);
-                    doubleArray[i] = 0.0f;  // Default to 0.0f in case of error
+                    doubleArray[i] = 0.0f; 
                 }
             }
             
             return doubleArray;
         }
-
+/*
+ * Getter function for this.absorbanceConversion
+ * @return this.absorbanceConversion the conversion factor to change absorbance to concentration
+ */
         public double getConcentrationConversion() {
             return this.absorbanceConversion;
         }
