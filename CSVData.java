@@ -7,13 +7,18 @@ import java.io.File;
 import java.io.FileNotFoundException;
 
 public class CSVData {
+    /*
+     * Parent class used to select and read files. 
+     */
     public ArrayList<String[]> data;
     public File file;
 
     public CSVData() {
         this.data = new ArrayList<>();
     }
-
+/*
+ * Allows the user to select a file from their computer to use as the basis for the object
+ */
     public void assignFiles() {
         JFileChooser file = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
         file.setDialogTitle("Select File");
@@ -22,7 +27,9 @@ public class CSVData {
             this.file = file.getSelectedFile();
         }
     }
-
+/*
+ * Scans the file and adds it to a list
+ */
     public void readFiles() {
         String[] record;
         try {
